@@ -1,0 +1,100 @@
+<div class="container">
+    <div id="stepper1" class="bs-stepper">
+      <div class="bs-stepper-header">
+        <div class="step" data-target="#test-l-1">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">1</span>
+            <span class="bs-stepper-label">Year</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-2">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">2</span>
+            <span class="bs-stepper-label">Make</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-3">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">3</span>
+            <span class="bs-stepper-label">Model</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-4">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">4</span>
+            <span class="bs-stepper-label">Trim</span>
+          </button>
+        </div>
+      </div>
+      <div class="bs-stepper-content">
+        <form [formGroup]="tireForm" (ngSubmit)="submit()">
+          <div id="test-l-1" class="content">
+            <div class="form-group">
+              <label for="year">Select year</label>
+              <select
+                formControlName="years"
+                class="form-control col-md-8"
+                (change)="onChangeYear($event)"
+                required
+              >
+                <option *ngFor="let year of years$" [value]="year">
+                  {{ year }}
+                </option>
+              </select>
+            </div>
+            <button (click)="next()" type="button" class="btn btn-primary">Next</button>
+          </div>
+          <div id="test-l-2" class="content">
+            <div class="form-group">
+              <label for="make">Select make</label>
+              <select
+                formControlName="makes"
+                class="form-control col-md-8"
+                (change)="onChangeMake($event)"
+                required
+              >
+                <option *ngFor="let make of makes$" [value]="make">
+                  {{ make }}
+                </option>
+              </select>
+            </div>
+            <button (click)="next()" type="button" class="btn btn-primary">Next</button>
+          </div>
+          <div id="test-l-3" class="content">
+            <div class="form-group">
+              <label for="model">Select model</label>
+              <select
+                formControlName="models"
+                class="form-control col-md-8"
+                (change)="onChangeModel($event)"
+                required
+              >
+                <option value="">Select model...</option>
+                <option *ngFor="let model of models$" [value]="model">
+                  {{ model }}
+                </option>
+              </select>
+            </div>
+            <button (click)="next()" type="button" class="btn btn-primary">Next</button>
+          </div>
+          <div id="test-l-4" class="content">
+            <div class="form-group">
+              <label for="trim">Select trim</label>
+              <select
+                formControlName="trims"
+                class="form-control col-md-8"
+              >
+                <option *ngFor="let trim of trims$" [value]="trim">
+                  {{ trim }}
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
